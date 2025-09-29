@@ -1,2 +1,4 @@
-/bin
-/obj
+/SlugMicroservice/bin
+/SlugMicroservice/obj
+/SlugMicroservice.Tests/obj
+/SlugMicroservice.Tests/bin

@@ -1,0 +1,29 @@
+syntax = "proto3";
+option csharp_namespace = "SlugService.Contract.v01";
+
+message GenerateSlugRequest
+{
+    string url = 1;
+}
+
+message GenerateSlugResponse
+{
+    string code = 1;
+}
+
+message ResolveSlugRequest
+{
+    string code = 1;
+}
+
+message ResolveSlugResponse
+{
+    string id = 1;
+    string url = 2;
+}
+
+service SlugService
+{
+    rpc GenerateSlug(GenerateSlugRequest) returns (GenerateSlugResponse);
+    rpc ResolveSlug(ResolveSlugRequest) returns (ResolveSlugResponse);
+}
