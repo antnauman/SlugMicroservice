@@ -14,10 +14,10 @@ public interface ISlugService
 
 public class SlugGrpcService : SlugService.Contract.v01.SlugService.SlugServiceBase
 {
-    private readonly LinkRepository linkRepository;
+    private readonly ILinkRepository linkRepository;
     private const string Alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-    public SlugGrpcService(LinkRepository linkRepository)
+    public SlugGrpcService(ILinkRepository linkRepository)
     {
         this.linkRepository = linkRepository;
     }
@@ -36,7 +36,7 @@ public class SlugGrpcService : SlugService.Contract.v01.SlugService.SlugServiceB
 
     public override async Task<ResolveSlugResponse> ResolveSlug(ResolveSlugRequest request, ServerCallContext context)
     {
-        var link = await linkRepository.ReadLinkByCode(request.Code);
+        var link = await linkRepository.GetLinkByCode(request.Code);
         if (link is null)
         { throw new Exception("Slug not found"); }
 

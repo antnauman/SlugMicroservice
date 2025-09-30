@@ -4,7 +4,14 @@ using System.Data;
 using SlugMicroservice.Models;
 using System.Data.Common;
 
-public class LinkRepository
+public interface ILinkRepository
+{
+    Task<bool> CreateLink(string targetUrl, string code);
+    Task<Link> GetLinkById(string id);
+    Task<Link> GetLinkByCode(string code);
+}
+
+public class LinkRepository : ILinkRepository
 {
     private string ConnectionString { get; set; }
 
@@ -34,7 +41,7 @@ public class LinkRepository
         return (idGuid != Guid.Empty);
     }
 
-    public async Task<Link> ReadLinkById(string id)
+    public async Task<Link> GetLinkById(string id)
     {
         var query = "SELECT \"Id\", \"Code\", \"TargetUrl\", \"CreatedUtc\" FROM public.\"Links\" WHERE \"Id\" = @Id";
         using var dbConnection = new NpgsqlConnection(ConnectionString);
@@ -42,7 +49,7 @@ public class LinkRepository
         return link;
     }
 
-    public async Task<Link> ReadLinkByCode(string code)
+    public async Task<Link> GetLinkByCode(string code)
     {
         var query = "SELECT \"Id\", \"Code\", \"TargetUrl\", \"CreatedUtc\" FROM public.\"Links\" WHERE \"Code\" = @Code";
         using var dbConnection = new NpgsqlConnection(ConnectionString);
