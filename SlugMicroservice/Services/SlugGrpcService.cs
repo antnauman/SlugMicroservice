@@ -4,6 +4,7 @@ using System.Text;
 using Grpc.Core;
 using SlugMicroservice.Models;
 using SlugService.Contract.v01;
+using SlugMicroservice.Respositories;
 
 namespace SlugMicroservice.Application;
 

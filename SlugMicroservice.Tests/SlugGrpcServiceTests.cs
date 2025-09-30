@@ -6,6 +6,7 @@ using Moq;
 using SlugMicroservice.Application;
 using SlugMicroservice.Models;
 using SlugService.Contract.v01;
+using SlugMicroservice.Respositories;
 using Xunit;
 
 namespace SlugMicroservice.Tests;

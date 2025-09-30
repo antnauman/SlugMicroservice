@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using Google.Protobuf.WellKnownTypes;
 using Microsoft.Extensions.Configuration;
+using SlugMicroservice.Respositories;
 using Npgsql;
 using Xunit;
 namespace SlugMicroservice.Tests;

@@ -4,6 +4,8 @@ using System.Data;
 using SlugMicroservice.Models;
 using System.Data.Common;
 
+namespace SlugMicroservice.Respositories;
+
 public interface ILinkRepository
 {
     Task<bool> CreateLink(string targetUrl, string code);
